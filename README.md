@@ -1,4 +1,4 @@
-# Terraform EKS Argocd Deployment
+# Terraform EKS Argocd Deployment - Demo
 
 The challenge requires to build a Infrastructure to deploy a new application, with high scalability and availability
 
