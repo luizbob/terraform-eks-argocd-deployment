@@ -75,17 +75,16 @@ On the EKS, we used the production environment to install the argocd, only one i
 
 To register a new cluster on Argo we can follow this doc: [argocd cluster](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/)
 
-Download the [ArgoCD CLI](https://argo-cd.readthedocs.io/en/stable/cli_installation/) and run the following commands *assuming that you have access to the staging account*
+Download the [ArgoCD CLI](https://argo-cd.readthedocs.io/en/stable/cli_installation/) and run the following commands *assuming that you have access to the accounts*
 
-From the production account:
+For the production account:
 
 ```bash
 aws eks update-kubeconfig --region sa-east-1 --name production
-kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-argocd login urlfromargoserver
+argocd cluster add --aws-cluster-name production --aws-role-arn role_created_on_production_account
 ```
 
-From the staging account:
+For the staging account:
 
 ```bash
 aws eks update-kubeconfig --region sa-east-1 --name staging
